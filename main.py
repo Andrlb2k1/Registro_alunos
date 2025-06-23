@@ -35,7 +35,7 @@ class SistemaDeRegistro:
             print(f'Id: {i[0]} | Nome: {i[1]} | Email: {i[2]} | Telefone: {i[3]} | Sexo: {i[4]} | Dta de nascimento: {i[5]} | Endereço: {i[6]} | Curso: {i[7]} | Imagem: {i[8]}')
 
     def search_student(self, id):
-        self.c.execute("SELECT * FROM estudantes WHERE id=?", (id))
+        self.c.execute("SELECT * FROM estudantes WHERE id=?", (id,))
         dados = self.c.fetchone()
         
         print(f'Id: {dados[0]} | Nome: {dados[1]} | Email: {dados[2]} | Telefone: {dados[3]} | Sexo: {dados[4]} | Dta de nascimento: {dados[5]} | Endereço: {dados[6]} | Curso: {dados[7]} | Imagem: {dados[8]}')
@@ -46,14 +46,31 @@ class SistemaDeRegistro:
         self.conn.commit()
 
         # Mostrando mensagem de sucesso
-        messagebox.showinfo('Sucesso', f'O(A) estudante com ID:{nova_valores[8]} foi atualizado!')
+        messagebox.showinfo('Sucesso', f'O(A) estudante com ID:{nova_valores[8]} foi atualizado(a)!')
     
     def delete_student(self, id):
         self.c.execute("DELETE FROM estudantes WHERE id=?", (id,))
         self.conn.commit()
 
         # Mostrando mensagem de sucesso
-        messagebox.showinfo('Sucesso', f'O(a) estudante com ID:{id} foi deletado!')
+        messagebox.showinfo('Sucesso', f'O(a) estudante com ID:{id} foi deletado(a)!')
 
 # Criando uma instância do sistema de registro
 sistema_de_registro = SistemaDeRegistro()
+
+# Informações
+# estudante = ('João', 'joao@gmail.com', '12345678', 'M', '12/11/2003', 'Brasil, Paraná', 'Informática', 'imagem2.png')
+# sistema_de_registro.register_student(estudante)
+
+# Ver os(as) estudantes
+# todos_alunos = sistema_de_registro.view_all_students()
+
+# Procurar aluno
+# aluno = sistema_de_registro.search_student(2)
+
+# Atualizar aluno
+# estudante = ('João', 'joao@gmail.com', '87654321', 'M', '11/11/2003', 'Brasil, Paraná', 'Informática', 'imagem2.png', 2)
+# aluno = sistema_de_registro.update_student(estudante)
+
+# Deletar aluno
+# sistema_de_registro.delete_student(2)
