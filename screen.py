@@ -49,7 +49,7 @@ frame_table = Frame(janela, width=800, height=100, bg=co1, relief=SOLID)
 frame_table.grid(row=3, column=0, pady=0, padx=10, sticky=NSEW, columnspan=5)
 
 # Trabalhando no frame "logo" -------------------------------------
-global imagem, imagem_string, l_imagem
+global image, image_string, l_image
 
 app_lg = Image.open('logo.png')
 app_lg = app_lg.resize((50,50))
@@ -96,5 +96,23 @@ l_course.place(x=220, y=130)
 c_course = ttk.Combobox(frame_details, width=20, font=('Ivy 8 bold'), justify='center')
 c_course['values'] = (courses)
 c_course.place(x=224, y=160)
+
+# Função para escolher imagem
+def choose_image():
+    global image, image_string, l_image
+
+    image = fd.askopenfilename()
+    image_string = image
+
+    image = Image.open(image)
+    image = image.resize((130,130))
+    image = ImageTk.PhotoImage(image)
+    l_image = Label(frame_details, image=image, bg=co1, fg=co4)
+    l_image.place(x=390, y=10)
+
+    load_button['text'] = 'Trocar de foto'.upper()
+
+load_button = Button(frame_details, command=choose_image, text='Carregar foto'.upper(), width=20, compound=CENTER, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
+load_button.place(x=390, y=160)
 
 janela.mainloop()
