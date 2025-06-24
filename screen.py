@@ -89,7 +89,7 @@ l_address.place(x=220, y=70)
 e_address = Entry(frame_details, width=15, justify='left', relief='solid')
 e_address.place(x=224, y=100)
 
-courses = ['Engenharia', 'Medicina', 'Sociais']
+courses = ['Engenharia', 'Medicina', 'Sociais', 'Outro']
 
 l_course = Label(frame_details, text="Cursos *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_course.place(x=220, y=130)
@@ -114,5 +114,39 @@ def choose_image():
 
 load_button = Button(frame_details, command=choose_image, text='Carregar foto'.upper(), width=20, compound=CENTER, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
 load_button.place(x=390, y=160)
+
+# Tabela de alunos
+def show_students():
+    list_header = ['Id', 'Nome', 'Email', 'Telefone', 'Sexo', 'Data de nascimento', 'Endereço', 'Curso']
+
+    df_list = []
+
+    tree_student = ttk.Treeview(frame_table, selectmode="extended", columns=list_header, show='headings')
+
+    vsb = ttk.Scrollbar(frame_table, orient='vertical', command=tree_student.yview)
+
+    hsb = ttk.Scrollbar(frame_table, orient='horizontal', command=tree_student.xview)
+
+    tree_student.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+    tree_student.grid(column=0, row=1, sticky=NSEW)
+    vsb.grid(column=1, row=1, sticky=NS)
+    hsb.grid(column=0, row=2, sticky=EW)
+    frame_table.grid_rowconfigure(0, weight=12)
+
+    hd = ["nw", "nw", "nw", "center", "center", "center", "center", "center", "center"]
+    h = [40, 150, 150, 70, 70, 70, 120, 100, 100]
+    n = 0
+
+    for col in list_header:
+        tree_student.heading(col, text=col.title(), anchor=NW)
+        tree_student.column(col, width=h[n], anchor=hd[n])
+
+        n+=1
+    
+    for item in df_list:
+        tree_student.insert('', 'end', values=item)
+
+# Chamar a tabela
+show_students()
 
 janela.mainloop()
