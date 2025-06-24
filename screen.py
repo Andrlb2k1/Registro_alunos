@@ -37,15 +37,24 @@ style.theme_use("clam")
 
 # Criando os frames
 frame_logo = Frame(janela, width=850, height=52, bg=co6)
-frame_logo.grid(row=0, column=0, pady=0, padx=0, sticky = NSEW, columnspan=5)
+frame_logo.grid(row=0, column=0, pady=0, padx=0, sticky=NSEW, columnspan=5)
 
 frame_buttons = Frame(janela, width=100, height=200, bg=co1, relief=RAISED)
-frame_buttons.grid(row=1, column=0, pady=1, padx=0, sticky = NSEW)
+frame_buttons.grid(row=1, column=0, pady=1, padx=0, sticky=NSEW)
 
 frame_details = Frame(janela, width=800, height=100, bg=co1, relief=SOLID)
-frame_details.grid(row=1, column=1, pady=1, padx=10, sticky = NSEW)
+frame_details.grid(row=1, column=1, pady=1, padx=10, sticky=NSEW)
 
 frame_table = Frame(janela, width=800, height=100, bg=co1, relief=SOLID)
-frame_table.grid(row=3, column=0, pady=0, padx=10, sticky = NSEW, columnspan=5)
+frame_table.grid(row=3, column=0, pady=0, padx=10, sticky=NSEW, columnspan=5)
+
+# Trabalhando no frame "logo"
+global imagem, imagem_string, l_imagem
+
+app_lg = Image.open('logo.png')
+app_lg = app_lg.resize((50,50))
+app_lg = ImageTk.PhotoImage(app_lg)
+app_logo = Label(frame_logo, image=app_lg, text=" Sistema de registro de alunos", width=850, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1)
+app_logo.place(x=5, y=0)
 
 janela.mainloop()
