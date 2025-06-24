@@ -73,4 +73,10 @@ l_telephone.place(x=4, y=130)
 e_telephone = Entry(frame_details, width=15, justify='left', relief='solid')
 e_telephone.place(x=7, y=160)
 
+l_sex = Label(frame_details, text="Sexo *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_sex.place(x=127, y=130)
+c_sex = ttk.Combobox(frame_details, width=7, font=('Ivy 8 bold'), justify='center')
+c_sex['values'] = ('M', 'F', 'T')
+c_sex.place(x=130, y=160)
+
 janela.mainloop()
