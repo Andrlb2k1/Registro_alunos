@@ -48,7 +48,7 @@ frame_details.grid(row=1, column=1, pady=1, padx=10, sticky=NSEW)
 frame_table = Frame(janela, width=800, height=100, bg=co1, relief=SOLID)
 frame_table.grid(row=3, column=0, pady=0, padx=10, sticky=NSEW, columnspan=5)
 
-# Trabalhando no frame "logo"
+# Trabalhando no frame "logo" -------------------------------------
 global imagem, imagem_string, l_imagem
 
 app_lg = Image.open('logo.png')
@@ -56,5 +56,11 @@ app_lg = app_lg.resize((50,50))
 app_lg = ImageTk.PhotoImage(app_lg)
 app_logo = Label(frame_logo, image=app_lg, text=" Sistema de registro de alunos", width=850, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1)
 app_logo.place(x=5, y=0)
+
+# Criando os campos de entrada --------------------------------------
+l_nome = Label(frame_details, text="Nome *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_nome.place(x=4, y=10)
+e_nome = Entry(frame_details, width=30, justify='left', relief='solid')
+e_nome.place(x=7, y=40)
 
 janela.mainloop()
