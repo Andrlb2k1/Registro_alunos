@@ -57,11 +57,18 @@ app_lg = ImageTk.PhotoImage(app_lg)
 app_logo = Label(frame_logo, image=app_lg, text=" Sistema de registro de alunos", width=850, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1)
 app_logo.place(x=5, y=0)
 
+# Abrindo a imagem
+image = Image.open('logo.png')
+image = image.resize((130,130))
+image = ImageTk.PhotoImage(image)
+l_image = Label(frame_details, image=image, bg=co1, fg=co4)
+l_image.place(x=390, y=10)
+
 # Criando os campos de entrada --------------------------------------
-l_nome = Label(frame_details, text="Nome *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_nome.place(x=4, y=10)
-e_nome = Entry(frame_details, width=30, justify='left', relief='solid')
-e_nome.place(x=7, y=40)
+l_name = Label(frame_details, text="Nome *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_name.place(x=4, y=10)
+e_name = Entry(frame_details, width=30, justify='left', relief='solid')
+e_name.place(x=7, y=40)
 
 l_email = Label(frame_details, text="Email *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_email.place(x=4, y=70)
@@ -117,7 +124,7 @@ load_button.place(x=390, y=160)
 
 # Tabela de alunos
 def show_students():
-    list_header = ['Id', 'Nome', 'Email', 'Telefone', 'Sexo', 'Data de nascimento', 'Endereço', 'Curso']
+    list_header = ['Id', 'Nome', 'Email', 'Telefone', 'Sexo', 'Data', 'Endereço', 'Curso']
 
     df_list = []
 
@@ -145,6 +152,18 @@ def show_students():
     
     for item in df_list:
         tree_student.insert('', 'end', values=item)
+
+# Procurar aluno
+frame_search = Frame(frame_buttons, width=40, height=55, bg=co1, relief=RAISED)
+frame_search.grid(row=0, column=0, pady=10, padx=10, sticky=NSEW)
+
+l_name = Label(frame_search, text=" Procurar aluno [Entra ID]", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_name.grid(row=0, column=0, pady=10, padx=0, sticky=NSEW)
+e_search = Entry(frame_search, width=5, justify='center', relief='solid', font=('Ivy 10'))
+e_search.grid(row=1, column=0, pady=10, padx=0, sticky=NSEW)
+
+alter_button = Button(frame_search, text='Procurar', width=9, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
+alter_button.grid(row=1, column=1, pady=10, padx=0, sticky=NSEW)
 
 # Chamar a tabela
 show_students()
