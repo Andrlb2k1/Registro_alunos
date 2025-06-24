@@ -63,4 +63,14 @@ l_nome.place(x=4, y=10)
 e_nome = Entry(frame_details, width=30, justify='left', relief='solid')
 e_nome.place(x=7, y=40)
 
+l_email = Label(frame_details, text="Email *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_email.place(x=4, y=70)
+e_email = Entry(frame_details, width=30, justify='left', relief='solid')
+e_email.place(x=7, y=100)
+
+l_telephone = Label(frame_details, text="Telefone *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telephone.place(x=4, y=130)
+e_telephone = Entry(frame_details, width=15, justify='left', relief='solid')
+e_telephone.place(x=7, y=160)
+
 janela.mainloop()
