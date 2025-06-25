@@ -169,20 +169,24 @@ alter_button.grid(row=1, column=1, pady=10, padx=0, sticky=NSEW)
 app_img_add = Image.open('add.png')
 app_img_add = app_img_add.resize((25,25))
 app_img_add = ImageTk.PhotoImage(app_img_add)
-app_add = Button(frame_buttons, image=app_img_add, relief=GROOVE, text=' Adicionar', width=100,compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_add = Button(frame_buttons, image=app_img_add, relief=GROOVE, text=' Adicionar', width=100, compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_add.grid(row=1, column=0, pady=5, padx=10, sticky=NSEW)
 
 app_img_update = Image.open('update.png')
 app_img_update = app_img_update.resize((25,25))
 app_img_update = ImageTk.PhotoImage(app_img_update)
-app_update = Button(frame_buttons, image=app_img_update, relief=GROOVE, text=' Atualizar', width=100,compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_update = Button(frame_buttons, image=app_img_update, relief=GROOVE, text=' Atualizar', width=100, compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_update.grid(row=2, column=0, pady=5, padx=10, sticky=NSEW)
 
 app_img_delete = Image.open('delete.png')
 app_img_delete = app_img_delete.resize((25,25))
 app_img_delete = ImageTk.PhotoImage(app_img_delete)
-app_delete = Button(frame_buttons, image=app_img_delete, relief=GROOVE, text=' Deletar', width=100,compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_delete = Button(frame_buttons, image=app_img_delete, relief=GROOVE, text=' Deletar', width=100, compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_delete.grid(row=3, column=0, pady=5, padx=10, sticky=NSEW)
+
+# Linha separatória
+l_line = Label(frame_buttons, relief=GROOVE, text='h', width=1, height=123, anchor=NW, font=('Ivy 1'), bg=co1, fg=co1)
+l_line.place(x=235, y=15)
 
 # Chamar a tabela
 show_students()
