@@ -157,13 +157,32 @@ def show_students():
 frame_search = Frame(frame_buttons, width=40, height=55, bg=co1, relief=RAISED)
 frame_search.grid(row=0, column=0, pady=10, padx=10, sticky=NSEW)
 
-l_name = Label(frame_search, text=" Procurar aluno [Entra ID]", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_name.grid(row=0, column=0, pady=10, padx=0, sticky=NSEW)
+l_search = Label(frame_search, text=" Procurar aluno [Entra ID]", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_search.grid(row=0, column=0, pady=10, padx=0, sticky=NSEW)
 e_search = Entry(frame_search, width=5, justify='center', relief='solid', font=('Ivy 10'))
 e_search.grid(row=1, column=0, pady=10, padx=0, sticky=NSEW)
 
 alter_button = Button(frame_search, text='Procurar', width=9, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
 alter_button.grid(row=1, column=1, pady=10, padx=0, sticky=NSEW)
+
+# Botões ----------------------------------------------
+app_img_add = Image.open('add.png')
+app_img_add = app_img_add.resize((25,25))
+app_img_add = ImageTk.PhotoImage(app_img_add)
+app_add = Button(frame_buttons, image=app_img_add, relief=GROOVE, text=' Adicionar', width=100,compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_add.grid(row=1, column=0, pady=5, padx=10, sticky=NSEW)
+
+app_img_update = Image.open('update.png')
+app_img_update = app_img_update.resize((25,25))
+app_img_update = ImageTk.PhotoImage(app_img_update)
+app_update = Button(frame_buttons, image=app_img_update, relief=GROOVE, text=' Atualizar', width=100,compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_update.grid(row=2, column=0, pady=5, padx=10, sticky=NSEW)
+
+app_img_delete = Image.open('delete.png')
+app_img_delete = app_img_delete.resize((25,25))
+app_img_delete = ImageTk.PhotoImage(app_img_delete)
+app_delete = Button(frame_buttons, image=app_img_delete, relief=GROOVE, text=' Deletar', width=100,compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_delete.grid(row=3, column=0, pady=5, padx=10, sticky=NSEW)
 
 # Chamar a tabela
 show_students()
