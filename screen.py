@@ -68,6 +68,7 @@ l_image = Label(frame_details, image=image, bg=co1, fg=co4)
 l_image.place(x=390, y=10)
 
 # Criando funções para o CRUD ------------------------------------------
+# Função para adicionar aluno
 def add():
     global image, image_string, l_image
 
@@ -89,7 +90,7 @@ def add():
             return
     
     # Registrando os valores
-    sistema_de_registro.register_student(list)
+    register_system.register_student(list)
 
     # Limpando os campos de entrada
     e_name.delete(0, END)
@@ -102,6 +103,44 @@ def add():
 
     # Mostrando os valores na tabela
     show_students()
+
+# Função para procurar aluno
+def search():
+    global image, image_string, l_image
+
+    # Obtendo o id
+    id_student = int(e_search.get())
+
+    # Procurando o aluno
+    data = register_system.search_student(id_student)
+
+    # Limpando os campos de entrada
+    e_name.delete(0, END)
+    e_email.delete(0, END)
+    e_telephone.delete(0, END)
+    c_sex.delete(0, END)
+    birth_date.delete(0, END)
+    e_address.delete(0, END)
+    c_course.delete(0, END)
+
+    # Inserindo dados nos campos de entrada
+    e_name.insert(END, data[1])
+    e_email.insert(END, data[2])
+    e_telephone.insert(END, data[3])
+    c_sex.insert(END, data[4])
+    birth_date.insert(END, data[5])
+    e_address.insert(END, data[6])
+    c_course.insert(END, data[7])
+
+    image = data[8]
+    image_string = image
+
+    image = Image.open(image)
+    image = image.resize((130,130))
+    image = ImageTk.PhotoImage(image)
+
+    l_image = Label(frame_details, image=image, bg=co1, fg=co4)
+    l_image.place(x=390, y=10)
 
 # Criando os campos de entrada --------------------------------------
 l_name = Label(frame_details, text="Nome *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -165,7 +204,7 @@ load_button.place(x=390, y=160)
 def show_students():
     list_header = ['Id', 'Nome', 'Email', 'Telefone', 'Sexo', 'Data', 'Endereço', 'Curso']
 
-    df_list = sistema_de_registro.view_all_students()
+    df_list = register_system.view_all_students()
 
     tree_student = ttk.Treeview(frame_table, selectmode="extended", columns=list_header, show='headings')
 
@@ -201,8 +240,8 @@ l_search.grid(row=0, column=0, pady=10, padx=0, sticky=NSEW)
 e_search = Entry(frame_search, width=5, justify='center', relief='solid', font=('Ivy 10'))
 e_search.grid(row=1, column=0, pady=10, padx=0, sticky=NSEW)
 
-alter_button = Button(frame_search, text='Procurar', width=9, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
-alter_button.grid(row=1, column=1, pady=10, padx=0, sticky=NSEW)
+search_button = Button(frame_search, command=search, text='Procurar', width=9, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
+search_button.grid(row=1, column=1, pady=10, padx=0, sticky=NSEW)
 
 # Botões ----------------------------------------------
 app_img_add = Image.open('add.png')

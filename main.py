@@ -29,14 +29,15 @@ class SistemaDeRegistro:
 
     def view_all_students(self):
         self.c.execute("SELECT * FROM estudantes")
-        dados = self.c.fetchall()
-        return dados
+        data = self.c.fetchall()
+        
+        return data
 
     def search_student(self, id):
         self.c.execute("SELECT * FROM estudantes WHERE id=?", (id,))
-        dados = self.c.fetchone()
+        data = self.c.fetchone()
         
-        print(f'Id: {dados[0]} | Nome: {dados[1]} | Email: {dados[2]} | Telefone: {dados[3]} | Sexo: {dados[4]} | Dta de nascimento: {dados[5]} | Endereço: {dados[6]} | Curso: {dados[7]} | Imagem: {dados[8]}')
+        return data
 
     def update_student(self, nova_valores):
         query = "UPDATE estudantes SET nome=?, email=?, telefone=?, sexo=?, data_nascimento=?, endereco=?, curso=?, imagem=? WHERE id=?"
@@ -54,21 +55,21 @@ class SistemaDeRegistro:
         messagebox.showinfo('Sucesso', f'O(a) estudante com ID:{id} foi deletado(a)!')
 
 # Criando uma instância do sistema de registro
-sistema_de_registro = SistemaDeRegistro()
+register_system = SistemaDeRegistro()
 
 # Informações
 # estudante = ('João', 'joao@gmail.com', '12345678', 'M', '12/11/2003', 'Brasil, Paraná', 'Informática', 'imagem2.png')
-# sistema_de_registro.register_student(estudante)
+# register_system.register_student(estudante)
 
 # Ver os estudantes
-# todos_alunos = sistema_de_registro.view_all_students()
+# todos_alunos = register_system.view_all_students()
 
 # Procurar aluno
-# aluno = sistema_de_registro.search_student(2)
+# aluno = register_system.search_student(2)
 
 # Atualizar aluno
 # estudante = ('João', 'joao@gmail.com', '87654321', 'M', '11/11/2003', 'Brasil, Paraná', 'Informática', 'imagem2.png', 2)
-# aluno = sistema_de_registro.update_student(estudante)
+# aluno = register_system.update_student(estudante)
 
 # Deletar aluno
-# sistema_de_registro.delete_student(2)
+# register_system.delete_student(2)
