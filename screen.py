@@ -189,6 +189,38 @@ def update():
     # Mostrando os valores na tabela
     show_students()
 
+# Função para deletar aluno
+def delete():
+    global image, image_string, l_image
+
+    # Obtendo o id
+    id_student = int(e_search.get())
+
+    # Deletando o aluno
+    register_system.delete_student(id_student)
+
+    # Limpando os campos de entrada
+    e_name.delete(0, END)
+    e_email.delete(0, END)
+    e_telephone.delete(0, END)
+    c_sex.delete(0, END)
+    birth_date.delete(0, END)
+    e_address.delete(0, END)
+    c_course.delete(0, END)
+
+    e_search.delete(0, END)
+
+    # Abrindo a imagem
+    image = Image.open('logo.png')
+    image = image.resize((130,130))
+    image = ImageTk.PhotoImage(image)
+
+    l_image = Label(frame_details, image=image, bg=co1, fg=co4)
+    l_image.place(x=390, y=10)
+
+    # Mostrando os valores na tabela
+    show_students()
+
 # Criando os campos de entrada --------------------------------------
 l_name = Label(frame_details, text="Nome *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_name.place(x=4, y=10)
@@ -306,7 +338,7 @@ app_update.grid(row=2, column=0, pady=5, padx=10, sticky=NSEW)
 app_img_delete = Image.open('delete.png')
 app_img_delete = app_img_delete.resize((25,25))
 app_img_delete = ImageTk.PhotoImage(app_img_delete)
-app_delete = Button(frame_buttons, image=app_img_delete, relief=GROOVE, text=' Deletar', width=100, compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_delete = Button(frame_buttons, command=delete, image=app_img_delete, relief=GROOVE, text=' Deletar', width=100, compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_delete.grid(row=3, column=0, pady=5, padx=10, sticky=NSEW)
 
 # Linha separatória
