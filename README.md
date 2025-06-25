@@ -7,10 +7,6 @@ pip install pillow
 
 pip install tkcalendar
 
-pip install pandas
-
-pip install matplotlib
-
 - Imagens:
 
 https://icons8.com/icons
