@@ -12,6 +12,9 @@ from PIL import ImageTk, Image
 from tkcalendar import Calendar, DateEntry
 from datetime import date
 
+# Importando o "main"
+from main import *
+
 # Cores
 co0 = "#2e2d2b"  # Preta
 co1 = "#feffff"  # Branca   
@@ -63,6 +66,42 @@ image = image.resize((130,130))
 image = ImageTk.PhotoImage(image)
 l_image = Label(frame_details, image=image, bg=co1, fg=co4)
 l_image.place(x=390, y=10)
+
+# Criando funções para o CRUD ------------------------------------------
+def add():
+    global image, image_string, l_image
+
+    name = e_name.get()
+    email = e_email.get()
+    telephone = e_telephone.get()
+    sex = c_sex.get()
+    date = birth_date.get()
+    address = e_address.get()
+    course = c_course.get()
+    img = image_string
+
+    list = [name, email, telephone, sex, date, address, course, img]
+
+    # Verificando se a lista contém valor vazio
+    for i in list:
+        if i=='':
+            messagebox.showerror('Erro', 'Preencha todos os campos')
+            return
+    
+    # Registrando os valores
+    sistema_de_registro.register_student(list)
+
+    # Limpando os campos de entrada
+    e_name.delete(0, END)
+    e_email.delete(0, END)
+    e_telephone.delete(0, END)
+    c_sex.delete(0, END)
+    birth_date.delete(0, END)
+    e_address.delete(0, END)
+    c_course.delete(0, END)
+
+    # Mostrando os valores na tabela
+    show_students()
 
 # Criando os campos de entrada --------------------------------------
 l_name = Label(frame_details, text="Nome *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -126,7 +165,7 @@ load_button.place(x=390, y=160)
 def show_students():
     list_header = ['Id', 'Nome', 'Email', 'Telefone', 'Sexo', 'Data', 'Endereço', 'Curso']
 
-    df_list = []
+    df_list = sistema_de_registro.view_all_students()
 
     tree_student = ttk.Treeview(frame_table, selectmode="extended", columns=list_header, show='headings')
 
@@ -169,7 +208,7 @@ alter_button.grid(row=1, column=1, pady=10, padx=0, sticky=NSEW)
 app_img_add = Image.open('add.png')
 app_img_add = app_img_add.resize((25,25))
 app_img_add = ImageTk.PhotoImage(app_img_add)
-app_add = Button(frame_buttons, image=app_img_add, relief=GROOVE, text=' Adicionar', width=100, compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_add = Button(frame_buttons, command=add, image=app_img_add, relief=GROOVE, text=' Adicionar', width=100, compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_add.grid(row=1, column=0, pady=5, padx=10, sticky=NSEW)
 
 app_img_update = Image.open('update.png')

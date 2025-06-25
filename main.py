@@ -30,9 +30,7 @@ class SistemaDeRegistro:
     def view_all_students(self):
         self.c.execute("SELECT * FROM estudantes")
         dados = self.c.fetchall()
-
-        for i in dados:
-            print(f'Id: {i[0]} | Nome: {i[1]} | Email: {i[2]} | Telefone: {i[3]} | Sexo: {i[4]} | Dta de nascimento: {i[5]} | Endereço: {i[6]} | Curso: {i[7]} | Imagem: {i[8]}')
+        return dados
 
     def search_student(self, id):
         self.c.execute("SELECT * FROM estudantes WHERE id=?", (id,))
@@ -62,7 +60,7 @@ sistema_de_registro = SistemaDeRegistro()
 # estudante = ('João', 'joao@gmail.com', '12345678', 'M', '12/11/2003', 'Brasil, Paraná', 'Informática', 'imagem2.png')
 # sistema_de_registro.register_student(estudante)
 
-# Ver os(as) estudantes
+# Ver os estudantes
 # todos_alunos = sistema_de_registro.view_all_students()
 
 # Procurar aluno
