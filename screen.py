@@ -142,6 +142,53 @@ def search():
     l_image = Label(frame_details, image=image, bg=co1, fg=co4)
     l_image.place(x=390, y=10)
 
+# Função para atualizar aluno
+def update():
+    global image, image_string, l_image
+
+    # Obtendo o id
+    id_student = int(e_search.get())
+
+    name = e_name.get()
+    email = e_email.get()
+    telephone = e_telephone.get()
+    sex = c_sex.get()
+    date = birth_date.get()
+    address = e_address.get()
+    course = c_course.get()
+    img = image_string
+
+    list = [name, email, telephone, sex, date, address, course, img, id_student]
+
+    # Verificando se a lista contém valor vazio
+    for i in list:
+        if i=='':
+            messagebox.showerror('Erro', 'Preencha todos os campos')
+            return
+    
+    # Atualizando os valores
+    register_system.update_student(list)
+
+    # Limpando os campos de entrada
+    e_name.delete(0, END)
+    e_email.delete(0, END)
+    e_telephone.delete(0, END)
+    c_sex.delete(0, END)
+    birth_date.delete(0, END)
+    e_address.delete(0, END)
+    c_course.delete(0, END)
+
+    # Abrindo a imagem
+    image = Image.open('logo.png')
+    image = image.resize((130,130))
+    image = ImageTk.PhotoImage(image)
+
+    l_image = Label(frame_details, image=image, bg=co1, fg=co4)
+    l_image.place(x=390, y=10)
+
+    # Mostrando os valores na tabela
+    show_students()
+
 # Criando os campos de entrada --------------------------------------
 l_name = Label(frame_details, text="Nome *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_name.place(x=4, y=10)
@@ -253,7 +300,7 @@ app_add.grid(row=1, column=0, pady=5, padx=10, sticky=NSEW)
 app_img_update = Image.open('update.png')
 app_img_update = app_img_update.resize((25,25))
 app_img_update = ImageTk.PhotoImage(app_img_update)
-app_update = Button(frame_buttons, image=app_img_update, relief=GROOVE, text=' Atualizar', width=100, compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_update = Button(frame_buttons, command=update, image=app_img_update, relief=GROOVE, text=' Atualizar', width=100, compound=LEFT, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_update.grid(row=2, column=0, pady=5, padx=10, sticky=NSEW)
 
 app_img_delete = Image.open('delete.png')
