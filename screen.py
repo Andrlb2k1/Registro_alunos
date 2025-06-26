@@ -240,7 +240,7 @@ e_telephone.place(x=7, y=160)
 l_sex = Label(frame_details, text="Sexo *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_sex.place(x=127, y=130)
 c_sex = ttk.Combobox(frame_details, width=7, font=('Ivy 8 bold'), justify='center')
-c_sex['values'] = ('M', 'F', 'T')
+c_sex['values'] = ('M', 'F', 'X')
 c_sex.place(x=130, y=160)
 
 l_birth_date = Label(frame_details, text="Data de nascimento *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -253,7 +253,7 @@ l_address.place(x=220, y=70)
 e_address = Entry(frame_details, width=15, justify='left', relief='solid')
 e_address.place(x=224, y=100)
 
-courses = ['Engenharia', 'Medicina', 'Sociais', 'Outro']
+courses = ['Engenharia', 'Medicina', 'Sociais', 'Informática', 'Outro']
 
 l_course = Label(frame_details, text="Cursos *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_course.place(x=220, y=130)
