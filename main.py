@@ -52,7 +52,7 @@ class SistemaDeRegistro:
         self.conn.commit()
 
         # Mostrando mensagem de sucesso
-        messagebox.showinfo('Sucesso', f'O(a) estudante com ID:{id} foi deletado(a)!')
+        messagebox.showinfo('Sucesso', f'O(A) estudante com ID:{id} foi deletado(a)!')
 
 # Criando uma instância do sistema de registro
 register_system = SistemaDeRegistro()

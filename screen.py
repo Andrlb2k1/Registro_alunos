@@ -86,7 +86,7 @@ def add():
     # Verificando se a lista contém valor vazio
     for i in list:
         if i=='':
-            messagebox.showerror('Erro', 'Preencha todos os campos')
+            messagebox.showerror('Erro', 'Preencha todos os campos!')
             return
     
     # Registrando os valores
@@ -163,7 +163,7 @@ def update():
     # Verificando se a lista contém valor vazio
     for i in list:
         if i=='':
-            messagebox.showerror('Erro', 'Preencha todos os campos')
+            messagebox.showerror('Erro', 'Preencha todos os campos!')
             return
     
     # Atualizando os valores
@@ -253,7 +253,7 @@ l_address.place(x=220, y=70)
 e_address = Entry(frame_details, width=15, justify='left', relief='solid')
 e_address.place(x=224, y=100)
 
-courses = ['Engenharia', 'Medicina', 'Sociais', 'Informática', 'Outro']
+courses = ['Engenharia', 'Medicina', 'Direito', 'Informática', 'Outro']
 
 l_course = Label(frame_details, text="Cursos *", anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_course.place(x=220, y=130)
