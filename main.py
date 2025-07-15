@@ -1,7 +1,7 @@
 import sqlite3
 from tkinter import messagebox
 
-class SistemaDeRegistro:
+class RegisterSystem:
     def __init__(self):
         self.conn = sqlite3.connect('estudante.db')
         self.c = self.conn.cursor()
@@ -55,7 +55,7 @@ class SistemaDeRegistro:
         messagebox.showinfo('Sucesso', f'O(A) estudante com ID:{id} foi deletado(a)!')
 
 # Criando uma instância do sistema de registro
-register_system = SistemaDeRegistro()
+register_system = RegisterSystem()
 
 # Informações
 # estudante = ('João', 'joao@gmail.com', '12345678', 'M', '12/11/2003', 'Brasil, Paraná', 'Informática', 'imagem2.png')
